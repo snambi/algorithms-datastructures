@@ -48,7 +48,7 @@ public class LRUCache<K,V> implements Cache<K,V>{
     }
 
     @Override
-    public boolean isEmoty() {
+    public boolean isEmpty() {
         return map.isEmpty();
     }
 

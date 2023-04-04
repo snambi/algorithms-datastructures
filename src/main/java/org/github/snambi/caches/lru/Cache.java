@@ -7,7 +7,7 @@ public interface Cache<K,V> {
 
     boolean put(K key, V value);
 
-    boolean isEmoty();
+    boolean isEmpty();
 
     int size();
 

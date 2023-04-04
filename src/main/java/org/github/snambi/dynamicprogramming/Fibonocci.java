@@ -3,7 +3,7 @@ package org.github.snambi.dynamicprogramming;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Fib {
+public class Fibonocci {
 
     public static long fib( long n, boolean cache ){
         Map<Long, Long> memo = null;
