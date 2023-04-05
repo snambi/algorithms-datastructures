@@ -29,32 +29,56 @@ public class Grid {
 //    }
     public boolean isValid(){
 
-        HashMap<Integer,Integer> numberCount = new HashMap<>();
-        for( int i=1; i<=9 ; i++ ){
-            numberCount.put( Integer.valueOf(i),0);
-        }
-
-        int l =0;
-        for( int[] row : array ){
-            if( row.length != 3){
-                break;
-            }else{
-                for ( int x : row ) {
-                    Integer count = numberCount.get(x);
-                    count++;
-                    numberCount.put(x, count);
-                }
+        // check whether there are 3 rows and 3 columns
+        int rowCount =0;
+        for( int[] row : array){
+            rowCount++;
+            if( row.length != 3 ){
+                throw new IllegalArgumentException("Row doesn't have 3 elements "+ Arrays.toString(row));
             }
-            l++;
         }
 
-        if(l != 3 ){
-            return false;
+        if( rowCount != 3 ){
+            throw new IllegalArgumentException("Number of rows= "+ rowCount + ", it must be 3");
         }
 
-        for( int x : numberCount.keySet()){
-            int count = numberCount.get(x);
-            if( count == 0 || count > 1){
+        // convert to one dimensional array
+        int[] single = new int[9];
+
+        int i=0;
+        for( int[] arr : array ){
+            for( int a : arr ){
+                single[i] = a;
+                i++;
+            }
+        }
+
+        return isValidArray(single);
+    }
+
+    public static boolean isValidArray(int[] array){
+
+        // array must be size 9
+        if( array == null || array.length == 0 ){
+            throw new IllegalArgumentException("Array is null or empty");
+        }
+
+        if( array.length != 9 ){
+            throw new IllegalArgumentException("Array length is not 9. size "+ array.length + " is invalid");
+        }
+
+        int[] count = new int[10];
+
+        // count the number of occurance
+        for( int i : array ){
+            int g = count[i];
+            g++;
+            count[i] = g;
+        }
+
+        // check the whether any number has count more than 1
+        for(int i=1; i<10 ; i++){
+            if( count[i] != 1 ){
                 return false;
             }
         }

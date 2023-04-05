@@ -33,9 +33,11 @@ public class Sudoku {
                             { 7, 4, 5, 0, 8, 6, 3, 1, 0 } };
 
         int[][] arr = {{3, 1, 6}, {5, 8, 8}, {4, 9, 2} };
-
         Grid grid = new Grid(arr);
-
         System.out.println("Grid is valid: " + grid.isValid() );
+
+        int[][] arr2 = {{ 5, 2, 9}, {1, 3, 4}, {7, 6, 8 } };
+        Grid grid2 = new Grid(arr2);
+        System.out.println("Grid is valid: " + grid2.isValid() );
     }
 }
