@@ -22,11 +22,28 @@ public class Grid {
         }
     }
 
-//    public List<Integer> getRow(int r){
-//        List<Integer> row = new ArrayList<>();
-//
-//        return Arrays.asList(array[r]);
-//    }
+    public int[] getRow( int rowNum){
+        if( rowNum <0 || rowNum > 3){
+            throw new IllegalArgumentException("Illegal row number "+ rowNum + " passed.");
+        }
+        return array[rowNum];
+    }
+
+    public int[] getColumn(int colNum){
+        if( colNum <0 || colNum > 3){
+            throw new IllegalArgumentException("Illegal Col number "+ colNum + " passed.");
+        }
+
+        int[] column = new int[3];
+        int colIndex = 0;
+        for( int[] row : array ){
+            column[colIndex] = row[colNum];
+            colIndex++;
+        }
+
+        return column;
+    }
+
     public boolean isValid(){
 
         // check whether there are 3 rows and 3 columns

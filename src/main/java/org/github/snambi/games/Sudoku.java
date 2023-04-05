@@ -1,6 +1,7 @@
 package org.github.snambi.games;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Sudoku {
@@ -39,5 +40,7 @@ public class Sudoku {
         int[][] arr2 = {{ 5, 2, 9}, {1, 3, 4}, {7, 6, 8 } };
         Grid grid2 = new Grid(arr2);
         System.out.println("Grid is valid: " + grid2.isValid() );
+        System.out.println("Grid row 1 : " + Arrays.toString(grid2.getRow(0)) );
+        System.out.println("Grid col 1 : " + Arrays.toString(grid2.getColumn(0)) );
     }
 }
